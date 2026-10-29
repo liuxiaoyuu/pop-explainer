@@ -1,10 +1,56 @@
 # pop-explainer（梗讲师）
 
+**English** | [中文](README.zh-CN.md)
+
 **Teach any concept with a misconception-reversal story.** An agent skill for Claude Code, Codex and other tools that support the Agent Skills format.
 
 Ask "explain X" and you get one short, complete story: the hero believes the most common wrong idea about X, acts on it, and then *works out* why it's wrong. Then the concept's name, one warning, and a quiz set in a different world — answer withheld until you try.
 
 > **The twist must come from figuring it out, never from a lucky reveal.** No culprit is caught, no result is announced: the turn is a question, a comparison or a count you can follow. You learn the reasoning, not the ending.
+
+## See it in action
+
+**You:** explain survivorship bias like a story
+
+> 🎬 **The Story**
+>
+> Ming wanted to open a dumpling shop on the old high street. He walked the whole street and noticed that the three shops that had survived for thirty years all cooked over big wood-fired stoves.
+>
+> "That's the secret!" He spent 20,000 building a wood-fired stove of his own (all numbers made up).
+>
+> Three months in, customers hadn't increased, but his firewood bill had gone up 2,000 a month.
+>
+> Old Xu, the cobbler next door, asked him one question: "Thirty years ago, how many dumpling shops were on this street?"
+>
+> Ming had no idea. Xu counted on his fingers: at least twenty — and every one of them cooked with wood, because nobody had gas back then. One by one they closed, until only these three were left.
+>
+> "The dozen-plus shops that closed had wood stoves too. You can only see the ones still open, so of course wood looks like the secret."
+>
+> … Ming took the photo of his stove off the wall. "I copied what every shop had, not what made these ones survive."
+>
+> 💡 **This is called: Survivorship bias**
+> When you only look at the winners still in front of you, you treat what they have in common as the secret of success — but the ones who disappeared may have had the same thing.
+>
+> ⚠️ **Don't Mix It Up**
+> The useful comparison is between the ones that survived and the ones that didn't. Staring only at the survivors can't tell you anything.
+>
+> 🤔 **Your Turn**
+> A friend says: "Look at the seniors who got into top universities — they all slept five hours a night in their final year. If you want to do well, sleep less." What is he missing?
+>
+> *Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer*
+
+What to notice: Ming acts on the misconception (he spends the money); the twist is a question and a count, not a reveal; the term appears only once, after the story; the quiz moves from shops to exams. Full example: [`examples.en.md`](skills/pop-explainer/references/examples.en.md).
+
+<details>
+<summary><b>What happens when you answer the quiz</b></summary>
+
+- **Right:** it names the key point you caught and ties it back: "same idea as the story: you only saw the survivors."
+- **Right verdict, wrong reason** (the most common case): it confirms the verdict, then uses a moment from the story to lead you to the real mechanism.
+- **Not there yet:** it never says "wrong" — it replays one beat of the story as a hint and lets you try again. After a second miss it gives the answer kindly and moves on.
+
+</details>
+
+## Output shape
 
 ```
 🎬 Story            300–500 Chinese characters (≈200–400 English words), no jargon
@@ -25,10 +71,6 @@ cp -R pop-explainer/skills/pop-explainer ~/.codex/skills/    # Codex
 ```
 
 Other tools that support Agent Skills: copy `skills/pop-explainer/` into that tool's skills directory (check its docs). With the open-source `skills` CLI: `npx skills add liuxiaoyuu/pop-explainer`. Start a new session afterwards.
-
-## Example
-
-A full English answer (survivorship bias: a would-be shop owner copies the wood-fired stoves of three surviving shops, until a neighbour counts how many shops with wood stoves closed) is in `skills/pop-explainer/references/examples.en.md`; the Chinese original is `skills/pop-explainer/examples/golden-survivorship.zh.md`.
 
 More on the design, the learning research behind it, and the accuracy guardrails: [`skills/pop-explainer/README.md`](skills/pop-explainer/README.md).
 
