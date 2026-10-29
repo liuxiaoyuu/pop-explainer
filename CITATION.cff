@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this skill in your work, please cite it as below."
+title: "pop-explainer: teaching concepts with misconception-reversal stories"
+type: software
+authors:
+  - family-names: "Liu"
+    given-names: "Xiaoyu"
+version: 1.0.0
+date-released: "2026-10-30"
+license: MIT
+repository-code: "https://github.com/liuxiaoyuu/pop-explainer"
+keywords:
+  - agent skills
+  - explanation
+  - analogy
+  - learning
+  - education
