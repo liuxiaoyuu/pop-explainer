@@ -10,50 +10,57 @@ Ask "explain X" and you get one short, complete story: the hero believes the mos
 
 ## See it in action
 
-**You:** explain survivorship bias like a story
+**You:** explain regression to the mean like a story
 
-> 🎬 **The Story**
+> **🎬 The Story**
 >
-> Ming wanted to open a dumpling shop on the old high street. He walked the whole street and noticed that the three shops that had survived for thirty years all cooked over big wood-fired stoves.
+> Fang runs a noodle shop that does delivery only. Every night before bed she checks the day's average rating. It usually sits around 4.6 (all numbers made up).
 >
-> "That's the secret!" He spent 20,000 building a wood-fired stove of his own (all numbers made up).
+> One day it dropped to 4.1, and she stormed into the kitchen and chewed out her chef, Song. The next day it was back at 4.5. Another day it shot up to 4.9, and she happily sent Song a 200-yuan bonus. The next day it slid back to 4.6.
 >
-> Three months in, customers hadn't increased, but his firewood bill had gone up 2,000 a month.
+> After a few rounds of this, Fang had her rule: "Bonuses make people sloppy. Yelling is what works."
 >
-> Old Xu, the cobbler next door, asked him one question: "Thirty years ago, how many dumpling shops were on this street?"
+> Then she went away on a two-week supply trip and left her cousin Yu in charge. Yu is a softie. In two weeks she never yelled at anyone and never handed out a bonus.
 >
-> Ming had no idea. Xu counted on his fingers: at least twenty — and every one of them cooked with wood, because nobody had gas back then. One by one they closed, until only these three were left.
+> When Fang got back she went through the records, and stopped short. Of the 4 worst days in those two weeks, 3 were followed by a better day. Of the 4 best days, 3 were followed by a worse one. No yelling, no bonuses, and the exact same pattern.
 >
-> "The dozen-plus shops that closed had wood stoves too. You can only see the ones still open, so of course wood looks like the secret."
+> She opened the bad reviews from the worst days one by one. One day a rainstorm made every rider late and the noodles arrived soggy. One day a power cut next door threw the kitchen into chaos. And the best day? Cool weather, few orders, every rider on time.
 >
-> … Ming took the photo of his stove off the wall. "I copied what every shop had, not what made these ones survive."
+> Song's cooking hadn't changed at all in those two weeks. What changed was each day's luck. A really low day was usually Song cooking as normal and just happening to get hit by bad luck. But it doesn't storm every day, so the next day's luck went back to ordinary and the score drifted back toward 4.6. The really high days worked the same way: good luck doesn't promise to show up two days in a row.
 >
-> 💡 **This is called: Survivorship bias**
-> When you only look at the winners still in front of you, you treat what they have in common as the secret of success — but the ones who disappeared may have had the same thing.
+> Fang put her phone face down. "Every time I yelled, I was yelling right after the unluckiest day. The score came back because the luck came back, not because I yelled it back."
 >
-> ⚠️ **Don't Mix It Up**
-> The useful comparison is between the ones that survived and the ones that didn't. Staring only at the survivors can't tell you anything.
+> **💡 This is called: Regression to the mean**
 >
-> 🤔 **Your Turn**
-> A friend says: "Look at the seniors who got into top universities — they all slept five hours a night in their final year. If you want to do well, sleep less." What is he missing?
+> An unusually good or bad result usually has a big chunk of luck mixed in. Next time the luck is probably ordinary again, so the result drifts back toward the usual level, without anyone doing anything. Like in the story: while Yu was in charge, nobody yelled and nobody got a bonus, and the worst days were still followed by better ones. The Victorian scientist Francis Galton first noticed it when comparing the heights of parents and their children.
 >
-> *Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer*
+> **⚠️ Don't Mix It Up**
+>
+> It isn't "what goes up must come down." No force is pulling the score back; only the luck part goes back to normal. If Song's cooking had really got worse, the score would stay low and never come back by itself.
+>
+> **🤔 Your Turn**
+>
+> The city put speed cameras at the three intersections that had the most crashes last year, and this year all three had fewer crashes. Does that show the cameras work? What would you want to check first?
+>
+> Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer
 
-What to notice: Ming acts on the misconception (he spends the money); the twist is a question and a count, not a reveal; the term appears only once, after the story; the quiz moves from shops to exams. Full example: [`examples.en.md`](skills/pop-explainer/references/examples.en.md).
+What to notice: Fang acts on the misconception (she yells, she stops giving bonuses); the twist is a comparison — two weeks with nobody yelling show the same bounce — plus a count, not a reveal; the term appears only once, after the story; the quiz moves from a noodle shop to traffic cameras. Full example: [`regression-to-the-mean.en.md`](skills/pop-explainer/examples/regression-to-the-mean.en.md).
 
 <details>
 <summary><b>What happens when you answer the quiz</b></summary>
 
-- **Right:** it names the key point you caught and ties it back: "same idea as the story: you only saw the survivors."
+- **Right:** it names the key point you caught and ties it back: "same idea as the story: the luck came back, not the yelling."
 - **Right verdict, wrong reason** (the most common case): it confirms the verdict, then uses a moment from the story to lead you to the real mechanism.
 - **Not there yet:** it never says "wrong" — it replays one beat of the story as a hint and lets you try again. After a second miss it gives the answer kindly and moves on.
 
 </details>
 
-### More examples: sociology and philosophy (in Chinese)
+### More examples
 
-- **Self-fulfilling prophecy** (Merton) — someone posts "the ribs will run out today" in the dorm chat; everyone buys extra and the ribs do run out. The turn is two questions and a count (same 300 portions as last week, when they lasted until 1pm; 40-odd extra bought on one floor alone). Overturns "it came true, so the predictor saw it coming". → [`self-fulfilling-prophecy.zh.md`](skills/pop-explainer/examples/self-fulfilling-prophecy.zh.md)
-- **Veil of ignorance** (Rawls) — four roommates agree how to split a sweet-potato stall's takings *before* drawing lots for the worst job. The turn is one question: "if I draw the worst job, which split leaves me better off?" Overturns "fair means equal shares", and ⚠️ notes it's a thought experiment whose conclusion is contested. → [`veil-of-ignorance.zh.md`](skills/pop-explainer/examples/veil-of-ignorance.zh.md)
+- **Prisoner's dilemma** (game theory) — two neighbouring parents both sign their kids up for weekend maths classes to win the school's one science-camp place; the ranking doesn't move and both lose the money and their Sundays. The turn is two questions — "would you sign up if she hadn't? if she had?" — then "what did she work out at her table?" Overturns "it went wrong because she's selfish". → [`prisoners-dilemma.en.md`](skills/pop-explainer/examples/prisoners-dilemma.en.md)
+
+- **Self-fulfilling prophecy** (sociology, Merton; in Chinese) — someone posts "the ribs will run out today" in the dorm chat; everyone buys extra and the ribs do run out. The turn is two questions and a count (same 300 portions as last week, when they lasted until 1pm; 40-odd extra bought on one floor alone). Overturns "it came true, so the predictor saw it coming". → [`self-fulfilling-prophecy.zh.md`](skills/pop-explainer/examples/self-fulfilling-prophecy.zh.md)
+- **Veil of ignorance** (philosophy, Rawls; in Chinese) — four roommates agree how to split a sweet-potato stall's takings *before* drawing lots for the worst job. The turn is one question: "if I draw the worst job, which split leaves me better off?" Overturns "fair means equal shares", and ⚠️ notes it's a thought experiment whose conclusion is contested. → [`veil-of-ignorance.zh.md`](skills/pop-explainer/examples/veil-of-ignorance.zh.md)
 
 ## Output shape
 
