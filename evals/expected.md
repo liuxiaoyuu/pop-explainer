@@ -3,7 +3,7 @@
 ## prompts.md
 For P1–P4 every output should have:
 - 🎬 / 💡 / ⚠️ / 🤔 blocks in order (📌 extra for P4, which mentions an interview); headings in the user's language.
-- No term from `--terms` inside the story block.
+- Terms from `--terms` appear in the story at most once (the user's own term may show up once as a headline or a character's words; explaining with it is a fail).
 - The turn comes from a question, comparison or count — no "the real culprit was caught" / "results came out" ending.
 - One invented-number label at most, on first use.
 - Quiz in a different setting from the story; answer withheld; closing line present.

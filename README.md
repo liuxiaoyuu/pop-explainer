@@ -50,6 +50,13 @@ What to notice: Ming acts on the misconception (he spends the money); the twist 
 
 </details>
 
+### It also handles trending internet slang
+
+Slang has no textbook version and its meaning drifts, so the skill first checks the current mainstream reading (searching the web when it can), acts out the most common *misuse* of the term, and uses ⚠️ to say it's a trend or a joke, not a finding. Two runs from October 2026, in Chinese:
+
+- **薄肌理论 ("lean-muscle theory")** — a viral body ideal: "slim in clothes, defined without them". The story overturns the misreading that you get there by starving yourself; ⚠️ puts health before looks. → [`meme-lean-muscle.zh.md`](skills/pop-explainer/examples/meme-lean-muscle.zh.md)
+- **黄毛理论 ("bleached-hair-guy theory")** — named after the anime trope of the rival who steals the hero's girlfriend; online it means "keep a life of your own instead of people-pleasing". The story overturns "girls just like bad boys", ends before any outcome so it doesn't become a dating playbook, and treats 黄毛 strictly as a fictional archetype. → [`meme-huangmao.zh.md`](skills/pop-explainer/examples/meme-huangmao.zh.md)
+
 ## Output shape
 
 ```
