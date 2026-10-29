@@ -44,8 +44,4 @@ The instructions (`SKILL.md`) are written in Chinese; the skill answers in whate
 
 ## When to use something else
 
-- "Is this paper worth reading?" → `paper-triage`
-- "What does this paper's Methods actually identify?" → `methods-decomposer`
-
-Both live in [scholar-screen-skills](https://github.com/liuxiaoyuu/scholar-screen-skills).
 - A personal medical, legal or investment decision → it gives the general rules and when to see a professional first, and only offers a story afterwards.

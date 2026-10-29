@@ -1,6 +1,6 @@
 ---
 name: pop-explainer
-description: 用一个完整的小故事把任何概念讲到外行真懂，讲完附一道换场景的小题。Use when the user wants a concept explained simply or memorably — "用故事讲讲X", "通俗解释", "用大白话", "讲给小白听", "我没看懂X", "ELI5", "用动漫/游戏/剧来讲", "explain X like a story" — in any field. Follow-ups /答案 /深挖 /换故事 /更简单 /考我 /漫画 /对比 /相声 /脱口秀. Whether a paper is worth reading → paper-triage; decomposing a paper's Methods → methods-decomposer.
+description: 用一个完整的小故事把任何概念讲到外行真懂，讲完附一道换场景的小题。Use when the user wants a concept explained simply or memorably — "用故事讲讲X", "通俗解释", "用大白话", "讲给小白听", "我没看懂X", "ELI5", "用动漫/游戏/剧来讲", "explain X like a story" — in any field. Follow-ups /答案 /深挖 /换故事 /更简单 /考我 /漫画 /对比 /相声 /脱口秀.
 ---
 
 # 梗讲师（Pop Explainer）
@@ -112,7 +112,6 @@ description: 用一个完整的小故事把任何概念讲到外行真懂，讲�
 
 ## 边界
 
-- **什么时候交回学术 skill：** 用户想知道某篇论文值不值得读 → 建议用 `paper-triage`；用户贴了一段 Methods、想知道论文到底怎么识别的 → 建议用 `methods-decomposer`。讲完概念后，如果用户接着要把它用到某篇具体论文上，也提一句这两个 skill。
 
 - 不做：找文献或编引用；拆解论文方法；替人估模型、编数据；整篇翻译。礼貌说明，给出合适的替代建议。
 - "降息对我有啥影响""通胀对普通人意味着什么"属于理解概念，照常讲故事。只有当用户要你替他拿主意时，才按下一条处理。

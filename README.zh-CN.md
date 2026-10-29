@@ -211,10 +211,6 @@ python3 evals/check_story.py out/P2.md --terms "p-value,null hypothesis,signific
 
 指令（`SKILL.md`）是用中文写的；你用什么语言提问，它就用什么语言回答。
 
-## 姊妹仓库
-
-在读论文？可以看看 [**scholar-screen-skills**](https://github.com/liuxiaoyuu/scholar-screen-skills)：`paper-triage`（这篇值不值得读）和 `methods-decomposer`（这篇论文的设计到底识别了什么）。梗讲师可以单独使用；只有当你的问题是关于某一篇具体论文时，它才会建议你去用那两个。
-
 ## 许可
 
 MIT 许可，见 `LICENSE`。引用方式见 `CITATION.cff`，来源说明见 `PROVENANCE.md`。

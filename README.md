@@ -210,10 +210,6 @@ python3 evals/check_story.py out/P2.md --terms "p-value,null hypothesis,signific
 
 The instructions are written in Chinese; the skill answers in whatever language you write in.
 
-## Companion skills
-
-Reading research papers? See [**scholar-screen-skills**](https://github.com/liuxiaoyuu/scholar-screen-skills): `paper-triage` (is this paper worth reading?) and `methods-decomposer` (what does this paper's design actually identify?). pop-explainer works on its own; it just points you there when your question is about a specific paper.
-
 ## License
 
 MIT — see `LICENSE`. Citation: `CITATION.cff`. Provenance: `PROVENANCE.md`.
