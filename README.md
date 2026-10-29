@@ -50,12 +50,10 @@ What to notice: Ming acts on the misconception (he spends the money); the twist 
 
 </details>
 
-### It also handles trending internet slang
+### More examples: sociology and philosophy (in Chinese)
 
-Slang has no textbook version and its meaning drifts, so the skill first checks the current mainstream reading (searching the web when it can), acts out the most common *misuse* of the term, and uses ⚠️ to say it's a trend or a joke, not a finding. Two runs from October 2026, in Chinese:
-
-- **薄肌理论 ("lean-muscle theory")** — a viral body ideal: "slim in clothes, defined without them". The story overturns the misreading that you get there by starving yourself; ⚠️ puts health before looks. → [`meme-lean-muscle.zh.md`](skills/pop-explainer/examples/meme-lean-muscle.zh.md)
-- **黄毛理论 ("bleached-hair-guy theory")** — named after the anime trope of the rival who steals the hero's girlfriend; online it means "keep a life of your own instead of people-pleasing". The story overturns "girls just like bad boys", ends before any outcome so it doesn't become a dating playbook, and treats 黄毛 strictly as a fictional archetype. → [`meme-huangmao.zh.md`](skills/pop-explainer/examples/meme-huangmao.zh.md)
+- **Self-fulfilling prophecy** (Merton) — someone posts "the ribs will run out today" in the dorm chat; everyone buys extra and the ribs do run out. The turn is two questions and a count (same 300 portions as last week, when they lasted until 1pm; 40-odd extra bought on one floor alone). Overturns "it came true, so the predictor saw it coming". → [`self-fulfilling-prophecy.zh.md`](skills/pop-explainer/examples/self-fulfilling-prophecy.zh.md)
+- **Veil of ignorance** (Rawls) — four roommates agree how to split a sweet-potato stall's takings *before* drawing lots for the worst job. The turn is one question: "if I draw the worst job, which split leaves me better off?" Overturns "fair means equal shares", and ⚠️ notes it's a thought experiment whose conclusion is contested. → [`veil-of-ignorance.zh.md`](skills/pop-explainer/examples/veil-of-ignorance.zh.md)
 
 ## Output shape
 
