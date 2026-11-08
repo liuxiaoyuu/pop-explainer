@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pop-explainer comic</title>
+<style>
+  :root {
+    --paper: #fbf7ef; --ink: #1f1d1a; --muted: #6b655c; --panel: #ffffff;
+    --wrong: #d64545; --right: #2f8f5b; --accent: #f2c14e; --line: #1f1d1a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9e4da; font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif; color: var(--ink); }
+  .card { width: 1080px; height: 1440px; margin: 0 auto; background: var(--paper); padding: 56px 56px 40px; display: flex; flex-direction: column; gap: 28px; }
+  .head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
+  .title { font-size: 64px; font-weight: 900; letter-spacing: 1px; line-height: 1.1; }
+  .title small { display: block; font-size: 26px; font-weight: 600; color: var(--muted); letter-spacing: 0; margin-top: 8px; }
+  .tag { font-size: 22px; font-weight: 700; border: 3px solid var(--ink); border-radius: 999px; padding: 6px 18px; white-space: nowrap; }
+  .verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .verdict div { border: 3px solid var(--ink); border-radius: 18px; padding: 16px 20px; font-size: 26px; line-height: 1.4; background: var(--panel); }
+  .verdict b { display: block; font-size: 20px; letter-spacing: 2px; margin-bottom: 6px; }
+  .verdict .w b { color: var(--wrong); } .verdict .r b { color: var(--right); }
+  .verdict .w { box-shadow: 6px 6px 0 var(--wrong); } .verdict .r { box-shadow: 6px 6px 0 var(--right); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 22px; flex: 1; min-height: 0; }
+  .panel { min-height: 0; position: relative; background: var(--panel); border: 4px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .panel .num { position: absolute; top: 10px; left: 12px; font-weight: 900; font-size: 22px; background: var(--ink); color: #fff; border-radius: 8px; padding: 0 10px; z-index: 2; }
+  .panel.turn { box-shadow: 0 0 0 6px var(--accent); }
+  .panel svg { width: 100%; flex: 1; min-height: 0; height: auto; display: block; }
+  .caption { border-top: 3px solid var(--line); padding: 10px 16px; font-size: 22px; line-height: 1.4; height: 82px; overflow: hidden; background: #fffdf8; flex: none; }
+  .foot { display: flex; justify-content: space-between; color: var(--muted); font-size: 18px; }
+  .bubble-text { font-size: 21px; font-weight: 600; fill: var(--ink); }
+  .label { font-size: 18px; fill: var(--muted); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+
+<script>
+/* ============================================================
+   FILL ONLY THIS OBJECT. Everything below it is the renderer.
+   poses:  stand | point | think | shock | happy | sad | shrug | facepalm | walk | sit
+   faces:  neutral | smile | grin | frown | surprised | thinking
+   props:  phone | money | bowl | sign | book | bucket | chart | none
+   Each panel: 1–2 characters (x: 0–100 = position across the panel).
+   Optional: labels: { wrong: "✗ Common myth", right: "✓ Actually", brand: "pop-explainer" } for English cards.
+   ============================================================ */
+const DATA = {
+  concept: "回弹效应",
+  subtitle: "rebound effect",
+  tag: "环境经济学",
+  wrong: "空调省一半电，电费就少一半",
+  right: "用一次变便宜了，人就多用，省下的能源被抵消掉一部分",
+  panels: [
+    { caption: "旧空调每月电费 300，新空调耗电减半。", characters: [
+      { name: "小林", x: 30, pose: "happy", face: "grin", say: "电费要减半啦！" } ] },
+    { caption: "反正省电：睡觉开着，客厅也开。", characters: [
+      { name: "小林", x: 50, pose: "sit", face: "smile", say: "省电嘛，随便开" } ] },
+    { caption: "月底账单：不是 150，是 225。", characters: [
+      { name: "小林", x: 30, pose: "shock", face: "surprised", say: "怎么才省这点？" } ] },
+    { caption: "室友阿美翻出旧账单，问了一句。", characters: [
+      { name: "阿美", x: 30, pose: "point", face: "neutral", say: "以前一天开几小时？" },
+      { name: "小林", x: 72, pose: "think", face: "thinking" } ] },
+    { caption: "以前一天 4 小时，现在 6 小时。", turn: true, characters: [
+      { name: "小林", x: 50, pose: "think", face: "thinking", say: "便宜了，我就多开了" } ] },
+    { caption: "省下的电，被多开的那部分吃掉了一些。", characters: [
+      { name: "小林", x: 50, pose: "facepalm", face: "smile", say: "省了，但没减半" } ] }
+  ],
+  footer: "故事与数字均为虚构"
+};
+
+/* ===================== renderer ===================== */
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const S = { stroke: "#1f1d1a", "stroke-width": 5, "stroke-linecap": "round", "stroke-linejoin": "round", fill: "none" };
+
+// limb endpoints relative to (x, hip) for each pose: [leftHand, rightHand, leftFoot, rightFoot, headTilt]
+const POSES = {
+  stand:    { lh: [-26, -40], rh: [26, -40], lf: [-18, 52], rf: [18, 52] },
+  point:    { lh: [-24, -40], rh: [58, -88], lf: [-18, 52], rf: [20, 52] },
+  think:    { lh: [-24, -38], rh: [8, -98], re: [24, -62], lf: [-16, 52], rf: [16, 52] },
+  shock:    { lh: [-46, -112], rh: [46, -112], lf: [-26, 52], rf: [26, 52] },
+  happy:    { lh: [-40, -108], rh: [40, -108], lf: [-20, 52], rf: [20, 52] },
+  sad:      { lh: [-14, -30], rh: [14, -30], lf: [-12, 52], rf: [12, 52], droop: 10 },
+  shrug:    { lh: [-46, -86], le: [-30, -60], rh: [46, -86], re: [30, -60], lf: [-18, 52], rf: [18, 52] },
+  facepalm: { lh: [-24, -40], rh: [6, -104], re: [26, -70], lf: [-16, 52], rf: [16, 52] },
+  walk:     { lh: [-32, -46], rh: [30, -34], lf: [-30, 50], rf: [26, 48] },
+  sit:      { lh: [-24, -40], rh: [24, -40], lf: [-34, 20], rf: [34, 20], seat: true }
+};
+
+function face(g, cx, cy, kind) {
+  const eye = (dx) => el("circle", { cx: cx + dx, cy: cy - 4, r: 3, fill: "#1f1d1a" }, g);
+  if (kind === "surprised") { el("circle", { cx: cx - 8, cy: cy - 4, r: 4, ...S, "stroke-width": 3 }, g); el("circle", { cx: cx + 8, cy: cy - 4, r: 4, ...S, "stroke-width": 3 }, g); el("ellipse", { cx, cy: cy + 10, rx: 5, ry: 7, ...S, "stroke-width": 3 }, g); return; }
+  eye(-8); eye(8);
+  const m = { neutral: `M${cx-8},${cy+9} L${cx+8},${cy+9}`, smile: `M${cx-9},${cy+7} Q${cx},${cy+15} ${cx+9},${cy+7}`, grin: `M${cx-11},${cy+5} Q${cx},${cy+20} ${cx+11},${cy+5} Z`,
+              frown: `M${cx-9},${cy+13} Q${cx},${cy+5} ${cx+9},${cy+13}`, thinking: `M${cx-6},${cy+10} L${cx+8},${cy+8}` }[kind] || `M${cx-8},${cy+9} L${cx+8},${cy+9}`;
+  el("path", { d: m, ...S, "stroke-width": 3, fill: kind === "grin" ? "#fff" : "none" }, g);
+}
+
+function prop(g, kind, hx, hy) {
+  if (!kind || kind === "none") return;
+  const p = { ...S, "stroke-width": 3.5 };
+  if (kind === "phone") el("rect", { x: hx - 9, y: hy - 30, width: 18, height: 30, rx: 3, ...p, fill: "#cfe3ff" }, g);
+  if (kind === "money") { el("rect", { x: hx - 18, y: hy - 14, width: 36, height: 20, rx: 3, ...p, fill: "#c9f0c9" }, g); el("text", { x: hx, y: hy + 1, "text-anchor": "middle", "font-size": 14, "font-weight": 700 }, g).textContent = "¥"; }
+  if (kind === "bowl") el("path", { d: `M${hx-20},${hy-6} Q${hx},${hy+20} ${hx+20},${hy-6} Z`, ...p, fill: "#ffe2b8" }, g);
+  if (kind === "book") el("rect", { x: hx - 16, y: hy - 22, width: 32, height: 24, rx: 2, ...p, fill: "#f8d7da" }, g);
+  if (kind === "bucket") el("path", { d: `M${hx-14},${hy} L${hx-10},${hy+26} L${hx+10},${hy+26} L${hx+14},${hy} Z`, ...p, fill: "#d6e9f5" }, g);
+  if (kind === "sign") { el("rect", { x: hx - 34, y: hy - 46, width: 68, height: 34, rx: 4, ...p, fill: "#fff3c4" }, g); el("line", { x1: hx, y1: hy - 12, x2: hx, y2: hy + 6, ...p }, g); }
+  if (kind === "chart") { const x = hx - 30, y = hy - 52; el("rect", { x, y, width: 60, height: 46, rx: 4, ...p, fill: "#fff" }, g); el("path", { d: `M${x+6},${y+34} L${x+18},${y+12} L${x+30},${y+28} L${x+42},${y+10} L${x+54},${y+26}`, ...p, stroke: "#d64545" }, g); }
+}
+
+function figure(svg, c, W, H, side) {
+  const g = el("g", {}, svg);
+  const x = (c.x ?? 50) / 100 * W, hip = H - 92, neck = hip - 70, headR = 22;
+  const P = POSES[c.pose] || POSES.stand;
+  const headY = neck - headR + (P.droop || 0) * 0.3;
+  if (P.seat) el("line", { x1: x - 40, y1: hip + 22, x2: x + 40, y2: hip + 22, ...S, "stroke-width": 4, stroke: "#9a9389" }, g);
+  el("line", { x1: x, y1: neck, x2: x, y2: hip, ...S }, g);
+  const sh = neck + 10;
+  const arm = (end, elbow) => { const ex = x + end[0], ey = hip + end[1]; if (elbow) el("polyline", { points: `${x},${sh} ${x+elbow[0]},${hip+elbow[1]} ${ex},${ey}`, ...S }, g); else el("line", { x1: x, y1: sh, x2: ex, y2: ey, ...S }, g); return [ex, ey]; };
+  arm(P.lh, P.le); const rh = arm(P.rh, P.re);
+  el("line", { x1: x, y1: hip, x2: x + P.lf[0], y2: hip + P.lf[1], ...S }, g);
+  el("line", { x1: x, y1: hip, x2: x + P.rf[0], y2: hip + P.rf[1], ...S }, g);
+  el("circle", { cx: x, cy: headY, r: headR, ...S, fill: "#fff" }, g);
+  face(g, x, headY, c.face || "neutral");
+  const lhEnd = [x + P.lh[0], hip + P.lh[1]];
+  const handOnHead = ['think', 'facepalm'].includes(c.pose);
+  const holdAt = handOnHead ? lhEnd : rh;
+  prop(g, c.prop, holdAt[0], holdAt[1]);
+  if (c.name) { const t = el("text", { x, y: H - 12, "text-anchor": "middle", class: "label" }, g); t.textContent = c.name; }
+  const raised = !handOnHead && (Math.min(P.lh[1], P.rh[1]) < -95 || (c.prop && c.prop !== 'none' && rh[1] < hip - 80));
+  if (c.say) bubble(svg, c.say, x, headY - headR, W, side, raised ? { hx: x, hy: headY, r: headR } : null);
+}
+
+function bubble(svg, text, ax, ay, W, side, beside) {
+  const g = el("g", {}, svg);
+  const isCJK = /[\u3000-\u9fff\uff00-\uffef]/.test(text);
+  const unit = isCJK ? 22 : 11.5, maxW = W - 60, maxChars = Math.floor((maxW - 28) / unit);
+  const lines = [];
+  if (isCJK) { for (let i = 0; i < text.length; i += maxChars) lines.push(text.slice(i, i + maxChars)); }
+  else { let cur = ""; for (const word of text.split(/\s+/)) { const next = cur ? cur + " " + word : word; if (next.length > maxChars && cur) { lines.push(cur); cur = word; } else cur = next; } if (cur) lines.push(cur); }
+  const w = Math.min(Math.max(...lines.map(l => l.length)) * unit + 32, W - 24), h = lines.length * 28 + 20;
+  let bx = Math.min(Math.max(ax - w / 2 + side * 40, 12), W - w - 12), by = Math.max(ay - h - 22, 34);
+  if (beside) {
+    // hands are up: put the bubble next to the head instead of on top of the hands
+    const gap = 54, fitsRight = beside.hx + gap + w < W - 10, fitsLeft = beside.hx - gap - w > 10;
+    if (!fitsRight && !fitsLeft) { beside = null; }
+  }
+  if (beside) {
+    const gap = 54, right = (beside.hx + gap + w < W - 10) && (side >= 0 || beside.hx - gap - w <= 10);
+    bx = right ? beside.hx + gap : beside.hx - gap - w;
+    by = Math.max(beside.hy - h / 2, 34);
+    el("rect", { x: bx, y: by, width: w, height: h, rx: 16, fill: "#fff", stroke: "#1f1d1a", "stroke-width": 3 }, g);
+    const ex = right ? bx + 1 : bx + w - 1, ey = by + h / 2, tip = right ? beside.hx + beside.r + 6 : beside.hx - beside.r - 6;
+    el("path", { d: `M${ex},${ey - 8} L${tip},${beside.hy} L${ex},${ey + 8}`, fill: "#fff", stroke: "#1f1d1a", "stroke-width": 3, "stroke-linejoin": "round" }, g);
+    el("line", { x1: ex, y1: ey - 6, x2: ex, y2: ey + 6, stroke: "#fff", "stroke-width": 4 }, g);
+    lines.forEach((l, i) => { const t = el("text", { x: bx + w / 2, y: by + 32 + i * 28, "text-anchor": "middle", class: "bubble-text" }, g); t.textContent = l; });
+    return;
+  }
+  el("rect", { x: bx, y: by, width: w, height: h, rx: 16, fill: "#fff", stroke: "#1f1d1a", "stroke-width": 3 }, g);
+  const tx = Math.min(Math.max(ax, bx + 20), bx + w - 20);
+  el("path", { d: `M${tx-8},${by+h-1} L${ax},${ay-4} L${tx+8},${by+h-1}`, fill: "#fff", stroke: "#1f1d1a", "stroke-width": 3, "stroke-linejoin": "round" }, g);
+  el("line", { x1: tx - 6, y1: by + h - 1, x2: tx + 6, y2: by + h - 1, stroke: "#fff", "stroke-width": 4 }, g);
+  lines.forEach((l, i) => { const t = el("text", { x: bx + w / 2, y: by + 32 + i * 28, "text-anchor": "middle", class: "bubble-text" }, g); t.textContent = l; });
+}
+
+function render(d) {
+  document.documentElement.lang = /[\u4e00-\u9fff]/.test(d.concept) ? "zh" : "en";
+  const card = document.getElementById("card");
+  card.innerHTML = `
+    <div class="head"><div class="title">${d.concept}<small>${d.subtitle || ""}</small></div>${d.tag ? `<div class="tag">${d.tag}</div>` : ""}</div>
+    <div class="verdict"><div class="w"><b>${(d.labels && d.labels.wrong) || "✗ 常见误解"}</b>${d.wrong}</div><div class="r"><b>${(d.labels && d.labels.right) || "✓ 其实是"}</b>${d.right}</div></div>
+    <div class="grid" id="grid"></div>
+    <div class="foot"><span>${d.footer || ""}</span><span>${(d.labels && d.labels.brand) || "pop-explainer · 梗讲师"}</span></div>`;
+  const grid = document.getElementById("grid");
+  d.panels.forEach((p, i) => {
+    const div = document.createElement("div"); div.className = "panel" + (p.turn ? " turn" : "");
+    div.innerHTML = `<div class="num">${i + 1}</div>`;
+    const W = 470, H = 300; const svg = el("svg", { viewBox: `0 0 ${W} ${H}` }); div.appendChild(svg);
+    (p.characters || []).forEach((c, j, arr) => figure(svg, c, W, H, arr.length > 1 ? (j === 0 ? -1 : 1) : 0));
+    const cap = document.createElement("div"); cap.className = "caption"; cap.textContent = p.caption || ""; div.appendChild(cap);
+    grid.appendChild(div);
+  });
+}
+render(DATA);
+</script>
+</body>
+</html>

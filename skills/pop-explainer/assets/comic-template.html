@@ -164,6 +164,7 @@ function bubble(svg, text, ax, ay, W, side, beside) {
 }
 
 function render(d) {
+  document.documentElement.lang = /[\u4e00-\u9fff]/.test(d.concept) ? "zh" : "en";
   const card = document.getElementById("card");
   card.innerHTML = `
     <div class="head"><div class="title">${d.concept}<small>${d.subtitle || ""}</small></div>${d.tag ? `<div class="tag">${d.tag}</div>` : ""}</div>

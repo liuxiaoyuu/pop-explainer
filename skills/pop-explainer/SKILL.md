@@ -1,6 +1,6 @@
 ---
 name: pop-explainer
-description: 用"先信错、再想通"的方式讲懂任何概念——讲故事、检查你自己的理解哪里错了、生成上课用的材料，或者做成一张能分享的火柴人漫画卡。Use when the user wants a concept explained simply ("用故事讲讲X", "通俗解释", "我没看懂X", "ELI5", "explain X like a story"), wants their own understanding checked ("我理解的X对吗", "帮我看看这段话哪里理解错了", "check my explanation"), needs teaching material ("我要给学生讲X", "做个讲义", "lesson plan"), or wants a shareable comic ("做成漫画", "出一张图"). Follow-ups /答案 /深挖 /换故事 /更简单 /考我 /漫画 /体检 /课堂包 /对比 /相声 /脱口秀.
+description: 用"先信错、再想通"的方式讲懂任何概念——讲故事、检查你自己的理解哪里错了、生成上课用的材料，或者做成一张能分享的火柴人漫画卡。Strongest on environmental policy, environmental economics and public policy (外部性, 庇古税, 科斯定理, 碳交易, 回弹效应, 波特假说, 公地悲剧). Use when the user wants a concept explained simply ("用故事讲讲X", "通俗解释", "我没看懂X", "ELI5", "explain X like a story"), wants their own understanding checked ("我理解的X对吗", "帮我看看这段话哪里理解错了", "check my explanation"), needs teaching material ("我要给学生讲X", "做个讲义", "lesson plan"), or wants a shareable comic ("做成漫画", "出一张图"). Follow-ups /答案 /深挖 /换故事 /更简单 /考我 /漫画 /体检 /课堂包 /对比 /相声 /脱口秀.
 ---
 
 # 梗讲师（Pop Explainer）
@@ -24,7 +24,7 @@ description: 用"先信错、再想通"的方式讲懂任何概念——讲故�
 1. **受众**：用户没说，就默认"聪明的高中生 / 非本专业大学生"。用户说了年龄、年级或背景（"我 12 岁""我是学文科的""我是程序员"），就据此调整：年龄越小，场景越贴近校园和家里、句子越短；有专业背景的，可以借用他熟悉领域的场景。
 2. **一个核心**：这个概念最核心的一个道理是什么？只讲这一个。概念有很多面（比如贝叶斯既有"更新"又有"底数"），挑最常被误解、最有用的那一面。
 3. **一个误解**：外行最常见的错误想法是什么？它就是故事里主角的错误行动。
-4. **查易错清单**：如果概念属于统计、概率、科学、经济、AI 等常被讲错的领域，先读 `references/accuracy-pitfalls.md` 里对应条目，确认你要讲的那个道理是对的。
+4. **查易错清单**：如果概念属于统计、概率、科学、经济、AI 等常被讲错的领域，先读 `references/accuracy-pitfalls.md` 里对应条目，确认你要讲的那个道理是对的。环境政策、环境经济、环境政治、公共政策的概念（外部性、庇古税、科斯定理、碳交易、回弹效应、波特假说、公地悲剧、执行鸿沟……）读 `references/domains/environmental-policy.md`，这是本 skill 最熟的领域。
 5. **选场景**：按概念的结构挑故事（`references/scene-families.md` 有现成对照，易错清单里的"好场景"也是建议，可以直接用、改编或另想）。场景要让"关系"对得上，而不是表面像。
 6. **转折理由自检**：故事里让主角恍然大悟的那个理由，放进教科书里是不是同一个道理？如果不是，换场景重想。
 

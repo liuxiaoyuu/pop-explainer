@@ -2,15 +2,13 @@
 
 **English** | [中文](README.zh-CN.md)
 
-**Find the misconception, then flip it.** An agent skill for Claude Code, Codex and other tools that support the Agent Skills format — it explains concepts as stories, checks *your own* explanations for hidden misconceptions, builds lesson packs for teaching, and draws shareable stick-figure comic cards.
+**Find the misconception, then flip it.** An agent skill for Claude Code, Codex and other tools that support the Agent Skills format. It explains concepts as stories, checks *your own* explanations for hidden misconceptions, builds lesson packs for teaching, and draws shareable stick-figure comic cards.
 
-Ask "explain X" and you get one short, complete story: the hero believes the most common wrong idea about X, acts on it, and then *works out* why it's wrong. Then the concept's name, one warning, and a quiz set in a different world — answer withheld until you try.
-
-> **The twist must come from figuring it out, never from a lucky reveal.** No culprit is caught, no result is announced: the turn is a question, a comparison or a count you can follow. You learn the reasoning, not the ending.
+Built for **environmental policy, environmental economics and environmental politics** — a 47-concept guide covers externalities, Pigouvian taxes, the Coase theorem, carbon taxes vs. cap-and-trade, rebound effects, the Porter and pollution-haven hypotheses, Ostrom's commons, carbon leakage, environmental justice, climate negotiations and more — and it works for any concept from any field.
 
 <p align="center">
-  <img src="skills/pop-explainer/examples/comics/regression-to-the-mean.en.png" width="48%" alt="Comic card: regression to the mean">
-  <img src="skills/pop-explainer/examples/comics/prisoners-dilemma.zh.png" width="48%" alt="Comic card: prisoner's dilemma (Chinese)">
+  <img src="skills/pop-explainer/examples/comics/rebound-effect.zh.png" width="48%" alt="Comic card: rebound effect (Chinese)">
+  <img src="skills/pop-explainer/examples/comics/commons-ostrom.en.png" width="48%" alt="Comic card: tragedy of the commons? Not always">
 </p>
 <p align="center"><sub>Two comic cards made by <code>/comic</code> — 1080×1440, ready to post.</sub></p>
 
@@ -18,190 +16,150 @@ Ask "explain X" and you get one short, complete story: the hero believes the mos
 
 | Mode | Ask like this | You get |
 |---|---|---|
-| 🎬 **Story** (default) | "explain X like a story" | A short story where the hero believes the common myth, acts on it, and works out why it's wrong — then the term, one warning and a quiz |
-| 🩺 **Misconception check** `/checkup` | Paste *your own* explanation — notes, homework, a paragraph from your thesis — and ask "is this right?" | Each misconception quoted back, graded 🔴 / 🟡, fixed with a 100-word story and a corrected sentence; then your whole paragraph rewritten |
-| 📚 **Lesson pack** `/lesson` | "I'm teaching X to first-years for 20 minutes" | An opening story with a pause-and-predict moment, the definition, three class questions each with the *most common wrong answer*, the three places students get stuck, and a one-page handout |
+| 🎬 **Story** (default) | "explain the rebound effect like a story" | A short story where the hero believes the common myth, acts on it, and works out why it's wrong — then the term, one warning and a quiz |
+| 🩺 **Misconception check** `/checkup` | Paste *your own* notes, homework or a thesis paragraph and ask "is this right?" | Each misconception quoted back, graded 🔴 / 🟡, fixed with a short story and a corrected sentence; then your text rewritten |
+| 📚 **Lesson pack** `/lesson` | "I'm teaching the Coase theorem to first-years for 20 minutes" | An opening story with a pause-and-predict moment, the definition, three class questions each with the *most common wrong answer*, where students get stuck, and a one-page handout |
 | 🖼️ **Comic card** `/comic` | "turn it into a comic" | A 1080×1440 HTML card — title, myth vs. fact, six stick-figure panels with the turn highlighted — rendered to PNG |
 
 <details>
-<summary><b>🩺 Misconception check — excerpt</b> (a thesis paragraph that misreads a p-value and a confidence interval)</summary>
+<summary><b>🩺 Misconception check on environmental-economics notes — excerpt</b></summary>
 
-> **You wrote:** "这意味着政策有效的概率是 97%" *(this means the policy works with 97% probability)*
+> **Your notes:** "Emissions trading just lets firms pay for the right to pollute, so it's laxer than a carbon tax. The Coase theorem shows that if polluters compensate victims the problem is solved and government needn't intervene. And by the environmental Kuznets curve, pollution falls naturally once an economy is rich enough, so developing countries can grow first and clean up later."
 >
-> **What's wrong:** p = 0.03 is the chance of seeing an estimate this large *if the policy did nothing* — not the chance that it works.
+> 🔴 **Treating "firms pay" as "it's lax"** — cap-and-trade fixes the *quantity*; a tax fixes the *price*. Which is stricter depends on where the cap or the rate is set.
 >
-> **Mini-story:** a teller watches someone flip a coin from a fresh bank bag nine heads out of ten and declare it "97% a trick coin" — "flip a few hundred a day and you'll 'catch' a drawer full of fakes"…
+> 🔴 **Pinning "polluter pays" and "no government needed" on Coase** — Coase says that with clear rights and *cheap bargaining*, the efficient outcome is reached whoever holds the right; his real point is that bargaining is usually expensive, so institutions matter.
 >
-> **Change it to:** "If the policy had no effect, an estimate at least this large would occur about 3% of the time."
+> 🔴 **Reading an observed curve as an automatic law** — the EKC describes some local pollutants; evidence for CO₂ is weak, and turning points come with policy and technology, not by themselves.
 
-The same check flags reading the 95% interval as "95% chance the true effect is inside" and treating N = 12,000 as proof of practical importance, then rewrites the whole paragraph in academic register. Full output (Chinese): [`checkup-pvalue.zh.md`](skills/pop-explainer/examples/checkup-pvalue.zh.md). Lesson pack on opportunity cost: [`lesson-opportunity-cost.zh.md`](skills/pop-explainer/examples/lesson-opportunity-cost.zh.md).
+Each item comes with a short story and an academic rewrite. Full output (Chinese): [`checkup-env-notes.zh.md`](skills/pop-explainer/examples/environmental-policy/checkup-env-notes.zh.md).
 </details>
+
+> **The twist must come from figuring it out, never from a lucky reveal.** No culprit is caught, no result is announced: the turn is a question, a comparison or a count you can follow. You learn the reasoning, not the ending.
 
 ## Story mode in action
 
-**You:** explain regression to the mean like a story
+**You:** explain the rebound effect like a story
 
 > **🎬 The Story**
 >
-> Fang runs a noodle shop that does delivery only. Every night before bed she checks the day's average rating. It usually sits around 4.6 (all numbers made up).
+> Xiaomang's family swapped their old air conditioner for a new one. The salesman swore it would keep the flat just as cool on half the electricity.
 >
-> One day it dropped to 4.1, and she stormed into the kitchen and chewed out her chef, Song. The next day it was back at 4.5. Another day it shot up to 4.9, and she happily sent Song a 200-yuan bonus. The next day it slid back to 4.6.
+> That night Dad stuck a note on the fridge: "THE HUNDRED PLAN." His maths was airtight. The AC used to cost 200 a month in electricity (all numbers made up). Half of that is 100.
 >
-> After a few rounds of this, Fang had her rule: "Bonuses make people sloppy. Yelling is what works."
+> The Hundred Plan began.
 >
-> Then she went away on a two-week supply trip and left her cousin Yu in charge. Yu is a softie. In two weeks she never yelled at anyone and never handed out a bonus.
+> Week one, Dad said, "It's efficient now — leave it on all night."
+> Week two, Dad said, "It's efficient now — turn it down from 26 to 23."
+> Week three, Dad switched on the living-room unit before leaving for work. "It's efficient now. The flat'll be cool when we get home."
+> Grandma drifted past, fanning herself. "I've never seen anyone work so hard at saving."
 >
-> When Fang got back she went through the records, and stopped short. Of the 4 worst days in those two weeks, 3 were followed by a better day. Of the 4 best days, 3 were followed by a worse one. No yelling, no bonuses, and the exact same pattern.
+> The bill arrived at the end of the month: 150.
 >
-> She opened the bad reviews from the worst days one by one. One day a rainstorm made every rider late and the noodles arrived soggy. One day a power cut next door threw the kitchen into chaos. And the best day? Cool weather, few orders, every rider on time.
+> Dad grabbed his coat to go back to the shop and demand a refund for a fake "efficient" machine. Xiaomang stopped him and opened the AC's app. Last month: 200 hours. This month: 300 hours.
 >
-> Song's cooking hadn't changed at all in those two weeks. What changed was each day's luck. A really low day was usually Song cooking as normal and just happening to get hit by bad luck. But it doesn't storm every day, so the next day's luck went back to ordinary and the score drifted back toward 4.6. The really high days worked the same way: good luck doesn't promise to show up two days in a row.
+> She laid it out on the table. The old unit cost 1 an hour to run; the new one costs 0.5. The machine wasn't lying — every hour really was half price. But precisely because an hour got cheaper, the whole family kept saying "it's efficient now" and ran it half as long again.
 >
-> Fang put her phone face down. "Every time I yelled, I was yelling right after the unluckiest day. The score came back because the luck came back, not because I yelled it back."
+> Dad stared at THE HUNDRED PLAN for a long time, then added a line underneath in small letters: "Make something cheaper to use and people use more of it. We spent part of the savings running it more."
 >
-> **💡 This is called: Regression to the mean**
+> He didn't return it, though. Three hundred hours on the old unit would have cost 300.
 >
-> An unusually good or bad result usually has a big chunk of luck mixed in. Next time the luck is probably ordinary again, so the result drifts back toward the usual level, without anyone doing anything. Like in the story: while Yu was in charge, nobody yelled and nobody got a bonus, and the worst days were still followed by better ones. The Victorian scientist Francis Galton first noticed it when comparing the heights of parents and their children.
+> **💡 This is called: The rebound effect**
+>
+> When something becomes more efficient, each use gets cheaper, so people tend to use it more — and the real savings end up smaller than the efficiency gain promised. Like Xiaomang's family: each hour cost half as much, but they went from 200 hours to 300, so half of the 100 they expected to save got spent on running it more.
 >
 > **⚠️ Don't Mix It Up**
 >
-> It isn't "what goes up must come down." No force is pulling the score back; only the luck part goes back to normal. If Song's cooking had really got worse, the score would stay low and never come back by itself.
+> This doesn't mean efficiency is pointless — the bill still dropped by 50. In real life the rebound usually eats only part of the savings, and how big a part varies a lot by product and place; economists still argue about the size.
 >
 > **🤔 Your Turn**
 >
-> The city put speed cameras at the three intersections that had the most crashes last year, and this year all three had fewer crashes. Does that show the cameras work? What would you want to check first?
+> The city opens a new expressway, and the one-way commute drops from 40 minutes to 20. The transport department announces, "Total time people spend on the road each day will be cut in half." What are they missing?
 >
 > Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer
 
-What to notice: Fang acts on the misconception (she yells, she stops giving bonuses); the twist is a comparison — two weeks with nobody yelling show the same bounce — plus a count, not a reveal; the term appears only once, after the story; the quiz moves from a noodle shop to traffic cameras. Full example: [`regression-to-the-mean.en.md`](skills/pop-explainer/examples/regression-to-the-mean.en.md).
+Full example: [`rebound.en.md`](skills/pop-explainer/examples/environmental-policy/rebound.en.md).
+
+### More from environmental economics and politics
 
 <details>
-<summary><b>What happens when you answer the quiz</b></summary>
-
-- **Right:** it names the key point you caught and ties it back: "same idea as the story: the luck came back, not the yelling."
-- **Right verdict, wrong reason** (the most common case): it confirms the verdict, then uses a moment from the story to lead you to the real mechanism.
-- **Not there yet:** it never says "wrong" — it replays one beat of the story as a hint and lets you try again. After a second miss it gives the answer kindly and moves on.
-
-</details>
-
-### More examples: game theory, sociology, philosophy
-
-<details>
-<summary><b>Game theory: "what's the prisoner's dilemma?"</b> — overturns "it went wrong because she's selfish"</summary>
+<summary><b>"What is the Coase theorem?"</b> — overturns "Coase means the two sides sort it out, no rules needed"</summary>
 
 > 🎬 The Story
 >
-> Lin's daughter Xiaoman and her neighbour Mrs. Wu's son Dou are in the same class, and the two kids have been neck and neck for years. The school has exactly one place at the city science camp, and it goes to whoever ranks first in the end-of-term exams.
+> Tao had just become the neighbourhood mediator. Her first case: smoke from a street barbecue stall was pouring into Mrs Wang's flat on the second floor, so she couldn't open her windows all summer.
 >
-> Early in the term, Lin heard that Mrs. Wu had signed Dou up for weekend maths classes, 4,000 a term (all numbers made up). At dinner she exploded: "At the parents' meeting she said kids should have their weekends free. Now look at her. She can't stand to give an inch." The next day, Lin signed Xiaoman up too.
+> Qiang, who ran the stall, did the sums. A smoke filter would cost him 300 a month (all numbers made up). Mrs Wang said being able to open her windows was worth 500 a month to her.
 >
-> A term later, both kids had spent every Sunday in a classroom. The rankings came out the same as always: Dou first, Xiaoman second, one point behind.
+> They talked on the stairwell for ten minutes and sorted it out: the filter went in. Tao noticed something else. Whether the rule said "the stall has the right to smoke" or "Mrs Wang has the right to clean air," that filter gets installed either way — in one case Mrs Wang pays Qiang to fit it, in the other Qiang pays for it himself.
 >
-> Lin was winding up to complain again when her husband asked her a few questions.
+> Tao stayed up all night writing a report. She called it *The Talk-It-Out Method*. Its core principle, in one line: "Let the parties negotiate. Nobody upstairs needs to get involved."
 >
-> "Say you knew for sure Mrs. Wu hadn't signed Dou up. Would you have signed Xiaoman up?" Lin thought about it. "...Yes. Then Xiaoman would pull ahead."
+> The office loved it and sent her straight to Barbecue Street: 8 stalls, 120 flats upstairs.
+> First meeting: 30 households showed up. Not a single stall owner.
+> Second meeting: the stall owners came, and everyone spent two hours arguing about whose smoke was whose.
+> Third meeting: just as they were about to chip in for a shared chimney, the man from the third floor said, "I'm not paying. If everyone else pays, I won't smell it anyway."
 >
-> "And if Mrs. Wu had signed him up?" "Then I'd have to, or Xiaoman would fall behind."
+> Tao sat staring at her meeting notes. Qiang wandered by and glanced at them. "Last time, you and me — ten minutes on the stairs."
 >
-> "So whatever Mrs. Wu does, you sign up." He paused. "Now guess what Mrs. Wu worked out at her dinner table."
+> Tao froze. The first deal hadn't worked because nobody upstairs got involved. It worked because there were only two households, the smoke obviously came from one place, and ten minutes was enough. Now there were over a hundred flats and eight chimneys, and just getting everyone in a room and agreeing on the numbers cost more effort than the chimney itself.
 >
-> Lin went quiet. Mrs. Wu was facing the exact same two roads. Nobody had to be selfish: as long as each family was looking out for its own kid, both would sign up. But with both signed up, neither kid gained a place, and each family was out 4,000 and a whole term of Sundays. If neither had signed up, the ranking would have been the same, and they'd still have the money and the weekends.
+> She crossed out the title of her report and wrote: "When talking is cheap, people can sort it out themselves. When talking is expensive, someone has to set the rules first."
 >
-> She turned the receipt face down on the table. "She's not a bad person, and neither am I. It's just set up so that each family makes its smartest move, and together we both lose."
+> 💡 This is called: The Coase theorem
 >
-> 💡 This is called: The prisoner's dilemma
->
-> Each person makes the choice that's best for them, and added together the result is worse than if everyone had held back. Like in the story: whether or not the other family signs up, signing up is better for your own family, so both do, neither kid gets ahead, and both families lose money and weekends. The name comes from a classic thought experiment: two suspects questioned in separate rooms each do better by confessing, so both end up with longer sentences than if they'd both kept quiet.
+> If rights are clearly defined and it's cheap for the two sides to negotiate, they'll bargain their way to the best outcome on their own — and it doesn't matter who got the right in the first place; that only changes who pays. Like Qiang and Mrs Wang: whatever the rule, the filter goes in. But the economist Ronald Coase was really pointing at the other half: in the real world negotiating is often expensive, like on Barbecue Street, and then how the rules are set decides whether the problem gets solved at all.
 >
 > ⚠️ Don't Mix It Up
 >
-> What traps the two families isn't their character, it's the setup, so the way out is usually in the setup too: say, the school stops deciding everything on one ranking, or the families deal with each other long enough to see who keeps their word. A one-off encounter is the easiest trap to fall into; people who deal with each other again and again are more likely to learn to cooperate.
+> It isn't "the polluter pays." Even if the stall has the right to smoke, the filter still goes in — Mrs Wang just ends up paying for it.
 >
 > 🤔 Your Turn
 >
-> Everyone in the office stays until 9 p.m., even though there isn't much work and the boss doesn't track hours; nobody wants to look lazier than their colleagues. What are the two roads in front of each person, and why does nobody leave first?
+> Two flatmates: one wants a cat, the other is allergic to cat hair. Under a rule saying "tenants may keep pets" versus one saying "tenants have the right to a pet-free home," would the cat's fate turn out any differently?
 >
 > Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer
 
 </details>
 
 <details>
-<summary><b>Sociology: "explain the self-fulfilling prophecy"</b> — overturns "it came true, so the predictor saw it coming"</summary>
+<summary><b>"What did Ostrom say about the tragedy of the commons?"</b> — overturns "shared resources are doomed unless privatised or state-run"</summary>
 
 > 🎬 The Story
 >
-> Friday lunch at the campus canteen means the famous sweet-and-sour ribs on the second floor. Lin posted in the dorm group chat: "Heard there aren't enough ribs today — get there late and they're gone!"
+> Xiaohe came home from university for the summer and found that the pond the whole village shared had fewer fish every year.
 >
-> The chat lit up. Several people replied: "I'll grab an extra portion for my roommate, then."
+> He had just read a convincing idea in a book: when something belongs to everyone, everyone takes one more netful, and sooner or later it's empty. So he stayed up all night making a slideshow called *Three Steps to Save the Pond* and presented it to the village committee with a completely straight face. Step one: accept that people can't be trusted. Step two: accept that people really, truly can't be trusted. Step three: either lease the pond to a single family, or ask the town to send someone to guard it.
 >
-> At 12:05 the rib counter put up a "Sold out" sign. Lin snapped a photo and posted it, grinning: "Told you. Was I right or was I right?"
+> The village head heard him out. "So step three means the pond stops being ours."
 >
-> His roommate Nan didn't congratulate him. He just asked: "Last Friday nobody said anything. What time did the ribs sell out?"
+> Xiaohe wasn't convinced. He went next door to Willow Bend, where he'd heard there was a shared pond too — thirty years (all numbers made up), still full of fish, never leased to anyone, and the town had never sent a soul.
 >
-> Lin thought about it. "There were still thirty-odd portions left at one o'clock."
+> He asked the old man who looked after it: "Aren't you worried people will take too much?"
 >
-> "Did the canteen make fewer this week?"
+> The old man counted it off on his fingers. The mesh has to be wider than three fingers, so the small fish slip back. Each household fishes twice a month, on days the whole village agreed together. Forty households take turns keeping watch at night, so the person watching you tonight is your neighbour. Take too much once and it gets said out loud in front of everyone; do it again and you're banned for a month. Outsiders? Everyone round the pond knows everyone, so a strange face gets asked questions straight away.
 >
-> "No — the server said it's three hundred portions every Friday (all numbers made up)."
+> Xiaohe went home and looked at his own village's pond, and it clicked. Anyone could come, any time, take any amount, and nobody counted and nobody said a word.
 >
-> "Then that's odd. Three hundred portions lasted until one last week, and today they were gone by noon. Where did all the extra people come from?"
+> He changed the first slide: "The problem isn't that we share it. It's that nobody set the rules and nobody was watching. Let the people who use the pond make the rules and take turns watching, and a shared pond can last."
 >
-> Lin scrolled back through the chat and counted, one by one: extra portions for roommates, people buying two just in case... On their floor alone, more than forty extra portions had been bought.
+> 💡 This is called: Self-governance of the commons (common-pool resource governance)
 >
-> He froze. "There were enough ribs. People believed what I said and rushed to buy extra — that's what made them run out. I didn't guess right. My message made it come true."
->
-> 💡 This is called: Self-fulfilling prophecy
->
-> A belief that starts out false comes true because people believe it and act on it. Like in the story: there were enough ribs, until "there won't be enough" made everyone buy extra. The idea comes from the sociologist Robert K. Merton.
+> The ecologist Garrett Hardin argued in "the tragedy of the commons" that shared resources are doomed to be used up, so the only fixes are private ownership or government control. The political scientist Elinor Ostrom studied a huge number of real cases around the world and found that users can often set their own rules, monitor each other in turns, and punish rule-breakers step by step — and keep a resource going for generations. It won her the Nobel Prize in economics. Like the pond at Willow Bend: not leased out, no one sent from town, just the villagers' own rules.
 >
 > ⚠️ Don't Mix It Up
 >
-> Not every prediction that comes true counts. The key question is: if nobody had believed it, would the outcome have been the same? If the canteen had only made a hundred portions, Lin would simply have been well informed — whether people believed him wouldn't matter.
+> This doesn't mean shared things are fine if you leave them alone. Self-governance works under conditions: clear limits on who can use it, rules that fit local circumstances, users who help make the rules, monitoring, and penalties that escalate — Xiaohe's pond had none of these, and the tragedy can happen just as Hardin said.
 >
 > 🤔 Your Turn
 >
-> The weather forecast says "heavy rain on Saturday," and it does rain on Saturday. Someone in the residents' group chat says "the supermarket will run out of bottled water tomorrow," and the next day it does. Which one is a self-fulfilling prophecy, and why isn't the other?
+> The office fridge is always crammed with unclaimed, out-of-date lunch boxes, and the office manager says, "Either we get rid of the fridge or we hire someone to police it." If you fixed it the Willow Bend way, which rule would you set first?
 >
 > Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer
 
 </details>
 
-<details>
-<summary><b>Philosophy: "what is Rawls's veil of ignorance?"</b> — overturns "fair means equal shares"</summary>
-
-> 🎬 The Story
->
-> In the first week of term, four roommates set up a roast sweet-potato stall outside their dorm. There are two kinds of work: one person does the roasting — up at five to pick potatoes at the wholesale market, then minding the stove all evening — and the other three take turns running the stall and taking money. Who does what will be decided by drawing lots tomorrow.
->
-> Mi said: "Before we draw, let's agree how we split the money. If we wait until after, whoever draws the roasting will want more and whoever draws the stall will want equal shares, and we'll argue forever."
->
-> Qing answered straight away: "Easy. Equal shares is fairest — everyone gets a quarter."
->
-> Everyone nodded. Only Mi pulled out the notebook from last week's trial run (all numbers made up): "Last week we split it equally. We made 400 in a night, 100 each. But whoever was roasting felt that working harder got them nothing extra, so they picked the potatoes carelessly and didn't watch the fire, and loads got burnt. The stall next door gives the roaster a bigger cut, and they make 600 a night."
->
-> She wrote two splits on a piece of paper: equal shares, where each stall-minder gets 100; or the roaster gets 180 and each stall-minder gets 140.
->
-> "Forget whether it feels fair for a second. Just ask yourself: if tomorrow I draw the least rewarding job, minding the stall, which split leaves me with more?"
->
-> Qing stared at the two lines of numbers for a long time, then laughed. "I thought fair meant everyone gets the same. But I don't even know what I'll draw — so the thing I should protect most is 'what if I'm the one who gets the least'. 140 beats 100. Let the roaster take more, as long as the stall-minders get more too, and I'm in."
->
-> 💡 This is called: Veil of ignorance
->
-> When you set the rules, imagine you don't know where you'll end up — your background, your talents, your luck, all unknown. The philosopher John Rawls argued that people reasoning for themselves in this position would first guarantee everyone the same basic liberties; and when it comes to dividing money and resources, they wouldn't insist on equal shares, but would accept inequalities that also make the worst-off better off. Like in the story: nobody knew what they'd draw, so everyone compared how much the worst share would get.
->
-> ⚠️ Don't Mix It Up
->
-> Allowing a gap doesn't mean any gap is fine. If the roaster got more but sales didn't improve, the stall-minders would drop to 80 each — and nobody would agree to that before the draw. Also, the veil of ignorance is a thought experiment for testing whether rules are fair, and Rawls's conclusion is contested: some argue people behind the veil would choose the rule with the highest average income rather than protect the worst-off first.
->
-> 🤔 Your Turn
->
-> A band has to set its rules before drawing lots for who sings lead: does the lead singer get an extra share of the gig fee, or does everyone get the same? If you don't know whether you'll draw lead singer or drummer, what's the one thing you should find out before you vote?
->
-> Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer
-
-</details>
-
-What to notice: the maths-class story reaches its turn through two questions — "would you sign up if she hadn't? if she had?" — and ⚠️ says the rules trap people, not their character; the ribs story uses two questions and a count, and ⚠️ separates "came true" from "came true *because* people believed it"; the veil story turns on one "what if I draw the worst job?" and ⚠️ notes it's a contested thought experiment. Each example also exists in Chinese: `examples/*.zh.md`.
+Other fields: [regression to the mean](skills/pop-explainer/examples/regression-to-the-mean.en.md) · [prisoner's dilemma](skills/pop-explainer/examples/prisoners-dilemma.en.md) · [self-fulfilling prophecy](skills/pop-explainer/examples/self-fulfilling-prophecy.en.md) · [veil of ignorance](skills/pop-explainer/examples/veil-of-ignorance.en.md). Every example also exists in Chinese.
 
 ## Output shape
 
