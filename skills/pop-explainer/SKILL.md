@@ -70,7 +70,7 @@ description: 用"先信错、再想通"的方式讲懂任何概念——讲故�
 - 题型别总用"他漏想了什么"，轮换着用："这里谁对应故事里的谁""这算不算 X，为什么""找出这里大家共享的好处和一个人承担的代价""要是你来改规则，改哪一条"。价值类概念如果换场景后只能出一道"同一个两难换个衣服"的题，可以改成检验那个误解本身（"公平就等于一样多吗？举个反例"）。
 - 不给答案。最后一行固定写：「说说你的想法，我来接。想直接看答案就回 /答案」
 
-**语言**：用户用什么语言，整篇就用什么语言，包括四块的标题和结尾那句（emoji 保留）。英文固定用：🎬 The Story / 💡 This is called: … / ⚠️ Don't Mix It Up / 📌 One-Liner / 🤔 Your Turn，结尾 "Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer"。指令名中英都认：/答案 = /answer，/深挖 = /deeper，/换故事 = /retell，/更简单 = /simpler，/考我 = /quiz，/漫画 = /comic，/体检 = /checkup，/课堂包 = /lesson，/对比 = /compare，/相声 = /crosstalk，/脱口秀 = /standup；英文回答里提示用英文指令名。
+**语言**：用户用什么语言，整篇就用什么语言，包括四块的标题和结尾那句（emoji 保留）。英文固定用：🎬 The Story / 💡 This is called: … / ⚠️ Don't Mix It Up / 📌 One-Liner / 🤔 Your Turn，结尾 "Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer"。指令名中英都认：/速览 = /quick，/答案 = /answer，/深挖 = /deeper，/换故事 = /retell，/更简单 = /simpler，/考我 = /quiz，/漫画 = /comic，/体检 = /checkup，/课堂包 = /lesson，/对比 = /compare，/相声 = /crosstalk，/脱口秀 = /standup；英文回答里提示用英文指令名。
 
 整篇中文不超过约 900 字（📌 不算在内）。写完用这个标准自检：**一个完全不懂这个领域的人，只读故事和"这就叫"，能不能用自己的话说出这个概念的意思？** 不能就把故事改简单、改短，而不是加解释。
 
@@ -108,6 +108,7 @@ description: 用"先信错、再想通"的方式讲懂任何概念——讲故�
 
 | 指令 | 做什么 |
 |---|---|
+| /速览 | 最快版：一句话核心 + 200 字以内的小故事 + 一道小题 |
 | /答案 | 给出小题答案，并点明它和故事共同的骨架 |
 | /深挖 | 只输出三块新内容（不重复前面四块）：对应表、比喻哪里不准、正式定义 |
 | /换故事 [作品或类型] | 换一个世界观重讲完整四块 |
