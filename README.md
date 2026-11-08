@@ -2,13 +2,42 @@
 
 **English** | [中文](README.zh-CN.md)
 
-**Teach any concept with a misconception-reversal story.** An agent skill for Claude Code, Codex and other tools that support the Agent Skills format.
+**Find the misconception, then flip it.** An agent skill for Claude Code, Codex and other tools that support the Agent Skills format — it explains concepts as stories, checks *your own* explanations for hidden misconceptions, builds lesson packs for teaching, and draws shareable stick-figure comic cards.
 
 Ask "explain X" and you get one short, complete story: the hero believes the most common wrong idea about X, acts on it, and then *works out* why it's wrong. Then the concept's name, one warning, and a quiz set in a different world — answer withheld until you try.
 
 > **The twist must come from figuring it out, never from a lucky reveal.** No culprit is caught, no result is announced: the turn is a question, a comparison or a count you can follow. You learn the reasoning, not the ending.
 
-## See it in action
+<p align="center">
+  <img src="skills/pop-explainer/examples/comics/regression-to-the-mean.en.png" width="48%" alt="Comic card: regression to the mean">
+  <img src="skills/pop-explainer/examples/comics/prisoners-dilemma.zh.png" width="48%" alt="Comic card: prisoner's dilemma (Chinese)">
+</p>
+<p align="center"><sub>Two comic cards made by <code>/comic</code> — 1080×1440, ready to post.</sub></p>
+
+## Four modes
+
+| Mode | Ask like this | You get |
+|---|---|---|
+| 🎬 **Story** (default) | "explain X like a story" | A short story where the hero believes the common myth, acts on it, and works out why it's wrong — then the term, one warning and a quiz |
+| 🩺 **Misconception check** `/checkup` | Paste *your own* explanation — notes, homework, a paragraph from your thesis — and ask "is this right?" | Each misconception quoted back, graded 🔴 / 🟡, fixed with a 100-word story and a corrected sentence; then your whole paragraph rewritten |
+| 📚 **Lesson pack** `/lesson` | "I'm teaching X to first-years for 20 minutes" | An opening story with a pause-and-predict moment, the definition, three class questions each with the *most common wrong answer*, the three places students get stuck, and a one-page handout |
+| 🖼️ **Comic card** `/comic` | "turn it into a comic" | A 1080×1440 HTML card — title, myth vs. fact, six stick-figure panels with the turn highlighted — rendered to PNG |
+
+<details>
+<summary><b>🩺 Misconception check — excerpt</b> (a thesis paragraph that misreads a p-value and a confidence interval)</summary>
+
+> **You wrote:** "这意味着政策有效的概率是 97%" *(this means the policy works with 97% probability)*
+>
+> **What's wrong:** p = 0.03 is the chance of seeing an estimate this large *if the policy did nothing* — not the chance that it works.
+>
+> **Mini-story:** a teller watches someone flip a coin from a fresh bank bag nine heads out of ten and declare it "97% a trick coin" — "flip a few hundred a day and you'll 'catch' a drawer full of fakes"…
+>
+> **Change it to:** "If the policy had no effect, an estimate at least this large would occur about 3% of the time."
+
+The same check flags reading the 95% interval as "95% chance the true effect is inside" and treating N = 12,000 as proof of practical importance, then rewrites the whole paragraph in academic register. Full output (Chinese): [`checkup-pvalue.zh.md`](skills/pop-explainer/examples/checkup-pvalue.zh.md). Lesson pack on opportunity cost: [`lesson-opportunity-cost.zh.md`](skills/pop-explainer/examples/lesson-opportunity-cost.zh.md).
+</details>
+
+## Story mode in action
 
 **You:** explain regression to the mean like a story
 

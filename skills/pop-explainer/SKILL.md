@@ -1,6 +1,6 @@
 ---
 name: pop-explainer
-description: 用一个完整的小故事把任何概念讲到外行真懂，讲完附一道换场景的小题。Use when the user wants a concept explained simply or memorably — "用故事讲讲X", "通俗解释", "用大白话", "讲给小白听", "我没看懂X", "ELI5", "用动漫/游戏/剧来讲", "explain X like a story" — in any field. Follow-ups /答案 /深挖 /换故事 /更简单 /考我 /漫画 /对比 /相声 /脱口秀.
+description: 用"先信错、再想通"的方式讲懂任何概念——讲故事、检查你自己的理解哪里错了、生成上课用的材料，或者做成一张能分享的火柴人漫画卡。Use when the user wants a concept explained simply ("用故事讲讲X", "通俗解释", "我没看懂X", "ELI5", "explain X like a story"), wants their own understanding checked ("我理解的X对吗", "帮我看看这段话哪里理解错了", "check my explanation"), needs teaching material ("我要给学生讲X", "做个讲义", "lesson plan"), or wants a shareable comic ("做成漫画", "出一张图"). Follow-ups /答案 /深挖 /换故事 /更简单 /考我 /漫画 /体检 /课堂包 /对比 /相声 /脱口秀.
 ---
 
 # 梗讲师（Pop Explainer）
@@ -70,7 +70,7 @@ description: 用一个完整的小故事把任何概念讲到外行真懂，讲�
 - 题型别总用"他漏想了什么"，轮换着用："这里谁对应故事里的谁""这算不算 X，为什么""找出这里大家共享的好处和一个人承担的代价""要是你来改规则，改哪一条"。价值类概念如果换场景后只能出一道"同一个两难换个衣服"的题，可以改成检验那个误解本身（"公平就等于一样多吗？举个反例"）。
 - 不给答案。最后一行固定写：「说说你的想法，我来接。想直接看答案就回 /答案」
 
-**语言**：用户用什么语言，整篇就用什么语言，包括四块的标题和结尾那句（emoji 保留）。英文固定用：🎬 The Story / 💡 This is called: … / ⚠️ Don't Mix It Up / 📌 One-Liner / 🤔 Your Turn，结尾 "Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer"。指令名中英都认：/答案 = /answer，/深挖 = /deeper，/换故事 = /retell，/更简单 = /simpler，/考我 = /quiz，/漫画 = /comic，/对比 = /compare，/相声 = /crosstalk，/脱口秀 = /standup；英文回答里提示用英文指令名。
+**语言**：用户用什么语言，整篇就用什么语言，包括四块的标题和结尾那句（emoji 保留）。英文固定用：🎬 The Story / 💡 This is called: … / ⚠️ Don't Mix It Up / 📌 One-Liner / 🤔 Your Turn，结尾 "Tell me what you think and I'll pick it up from there. Want the answer straight away? Reply /answer"。指令名中英都认：/答案 = /answer，/深挖 = /deeper，/换故事 = /retell，/更简单 = /simpler，/考我 = /quiz，/漫画 = /comic，/体检 = /checkup，/课堂包 = /lesson，/对比 = /compare，/相声 = /crosstalk，/脱口秀 = /standup；英文回答里提示用英文指令名。
 
 整篇中文不超过约 900 字（📌 不算在内）。写完用这个标准自检：**一个完全不懂这个领域的人，只读故事和"这就叫"，能不能用自己的话说出这个概念的意思？** 不能就把故事改简单、改短，而不是加解释。
 
@@ -94,6 +94,16 @@ description: 用一个完整的小故事把任何概念讲到外行真懂，讲�
 - 连续答对两次：建议试试 /深挖 或 /考我。
 - 用户的回答带着问号，或者顺带问到了自己的实际问题（"是不是说我样本太少了？"）：先当作答案来批改，再用一句话回应他的实际问题。
 
+## 四种模式
+
+默认是上面的故事讲解。另外三种模式各有一份说明，**进入模式时先读对应文件**：
+
+| 模式 | 什么时候用 | 说明文件 |
+|---|---|---|
+| 🩺 误解体检 | 用户贴了**自己写的理解**（笔记、作业、论文段落、讲稿），问"对吗""帮我看看" | `references/modes/checkup.md` |
+| 📚 课堂包 | 用户要**给别人讲**：讲课、带讨论课、做讲义 | `references/modes/lesson.md` |
+| 🖼️ 漫画卡 | 用户要一张能分享的图："做成漫画""出一张图" | `references/modes/comic.md` + `assets/comic-template.html` |
+
 ## 互动指令
 
 | 指令 | 做什么 |
@@ -103,7 +113,9 @@ description: 用一个完整的小故事把任何概念讲到外行真懂，讲�
 | /换故事 [作品或类型] | 换一个世界观重讲完整四块 |
 | /更简单 | 故事压到 200 字内，场景更日常，句子更短 |
 | /考我 | 出 3 道生活题，由易到难，一题一题来，答完一题再出下一题 |
-| /漫画 | 把故事改成 6 格火柴人漫画脚本 |
+| /漫画 | 把故事做成一张 1080×1440 的 HTML 漫画卡（不能写文件时，退回成 6 格文字脚本） |
+| /体检 | 误解体检：检查用户自己写的理解 |
+| /课堂包 | 生成一套上课用的材料 |
 | /对比 A B | 一个故事里让两个概念都出场，最后一张区别表 |
 | /相声 | 把故事改成对口相声：逗哏的抱着那个误解不放，捧哏一路追问，问到他自己想通 |
 | /脱口秀 | 把故事改成第一人称的单口段子：自嘲"我当初是怎么信了这个的" |
